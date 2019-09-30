@@ -19,8 +19,8 @@ td {
     text-align: center;
 }
 .cell {
-    background-color: red;
+    background-color: black;
 }
 .hidden {
-    background-color: black;
+    background-color: white;
 }
