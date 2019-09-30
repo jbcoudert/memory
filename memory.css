@@ -1,5 +1,5 @@
 body {
-    width: 50%;
+    width: 60%;
     margin: auto;
 }
 header {
@@ -9,17 +9,18 @@ table {
     margin: 5rem;
 }
 
+tr {
+    color: white;
+}
+
 td {
     padding: 2rem;
     border: 2px solid black;
-    display: inline-block;
-    width: 55px;
-    margin: 0.5rem;
     text-align: center;
-}
-.hidden {
-    background-image: url("image.png");
 }
 .cell {
     background-color: red;
+}
+.hidden {
+    background-color: black;
 }
