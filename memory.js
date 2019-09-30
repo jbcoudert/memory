@@ -2,6 +2,8 @@ var tablElement = document.createElement("table");
 document.body.appendChild(tablElement);
 var cpt = 1
 nb = 0
+click1 = null;
+click2 = null;
 
 var btnGenerate = document.getElementsByTagName("button")[0];
 btnGenerate.addEventListener("click", function () {
@@ -27,7 +29,7 @@ btnGenerate.addEventListener("click", function () {
     for (var i = 1; i <= (nb * nb) / 2; i++) {
         numbers.push(i)
         numbers.push(i)
-       
+
     }
     for (let i = 0; i < numbers.length; i++) {
         var randomIndex = Math.floor(Math.random() * (i + 1));
@@ -46,21 +48,24 @@ btnGenerate.addEventListener("click", function () {
             casElement.className = "cell hidden"
             trElement.appendChild(casElement);
             casElement.innerHTML = numbers[cpt++];
-            casElement.addEventListener("click", function(){
-                this.classList.remove("hidden"); 
-                casElement.addEventListener("click", function () {
-                    if (2 == 2){
-                        casElement.style.backgroundColor = "blue"
-                    } else {
-                        casElement.classList.add("hidden")
-                    }
-                })
-            })
+            
+            casElement.addEventListener("click", function () {
+                this.classList.remove("hidden");
+                if (click1 == null) {
+                    click1 = this
 
-            //     if (numbers[i] == numbers[i]) {
-            //         casElement.style.backgroundColor = "blue"
-            //     }
-            // })
+                } else {
+                    click2 = this
+                    if (click1.innerHTML != click2.innerHTML) {
+                        click1.classList.add("hidden")
+                        click2.classList.add("hidden")
+                        
+                        
+                    }
+                    click1 = null
+                    click2 = null
+                }
+            })
         }
     }
 })
