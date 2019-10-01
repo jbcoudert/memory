@@ -1,5 +1,12 @@
 var tablElement = document.createElement("table");
 document.body.appendChild(tablElement);
+
+var headElement = document.getElementsByTagName("header")[0];
+var compteurElement = document.createElement("p")
+headElement.appendChild(compteurElement)
+compteurElement.innerHTML = 0
+compteurPoint = 0
+
 var cpt = 1
 nb = 0
 click1 = null;
@@ -38,6 +45,7 @@ btnGenerate.addEventListener("click", function () {
         numbers[randomIndex] = temp;
     }
 
+
     cpt = 0;
 
     for (let i = 0; i < nb; i++) {
@@ -48,22 +56,27 @@ btnGenerate.addEventListener("click", function () {
             casElement.className = "cell hidden"
             trElement.appendChild(casElement);
             casElement.innerHTML = numbers[cpt++];
-            
+
             casElement.addEventListener("click", function () {
                 this.classList.remove("hidden");
                 if (click1 == null) {
                     click1 = this
-
                 } else {
                     click2 = this
-                    if (click1.innerHTML != click2.innerHTML) {
-                        click1.classList.add("hidden")
-                        click2.classList.add("hidden")
-                        
-                        
+                    if (click1.innerHTML == click2.innerHTML && click1 != click2) {
+                        compteurPoint ++
+                        compteurElement.innerHTML = compteurPoint
+                        click1 = null
+                        click2 = null
+                    } else {
+                        setTimeout(function () {
+                            click1.classList.add("hidden")
+                            click2.classList.add("hidden")
+                            
+                            click1 = null
+                            click2 = null
+                        }, 1000);
                     }
-                    click1 = null
-                    click2 = null
                 }
             })
         }
